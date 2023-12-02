@@ -1,0 +1,25 @@
+﻿<Window x:Class="BookShop.Redaction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookShop"
+        mc:Ignorable="d"
+		WindowStartupLocation="CenterScreen"
+        Title="Redaction"  Height="370" Width="280" ResizeMode="NoResize">
+	<Grid>
+		<Label Content="Введите логин" HorizontalAlignment="Center" Margin="0,10,39,0" VerticalAlignment="Top"/>
+		<Label Content="Введите пароль" HorizontalAlignment="Center" Margin="0,48,31,0" VerticalAlignment="Top"/>
+		<Label Content="Повторите ввод пароля" HorizontalAlignment="Center" Margin="12,91,0,0" VerticalAlignment="Top"/>
+		<Label Content="Введите имя" HorizontalAlignment="Center" Margin="0,150,49,0" VerticalAlignment="Top"/>
+		<Label Content="Введите фамилию" HorizontalAlignment="Center" Margin="0,193,19,0" VerticalAlignment="Top"/>
+		<Label Content="Введите почту" HorizontalAlignment="Center" Margin="0,235,39,0" VerticalAlignment="Top"/>
+		<TextBox x:Name="Loggin" HorizontalAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding Login,  Mode=TwoWay}"/>
+		<PasswordBox x:Name="OnePass" HorizontalAlignment="Center" Margin="0,68,0,0" VerticalAlignment="Top" Width="120"/>
+		<PasswordBox x:Name="TwoPass" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="TwoPass_PasswordChanged"/>
+		<TextBox x:Name="Name" HorizontalAlignment="Center" Margin="0,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"  Text="{Binding Name,  Mode=TwoWay}"/>
+		<TextBox x:Name="SurName" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="0,212,0,0"  Text="{Binding SurName,  Mode=TwoWay}"/>
+		<TextBox x:Name="Mail" HorizontalAlignment="Center" Margin="0,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"   Text="{Binding Mail,  Mode=TwoWay}"/>
+		<Button x:Name="Save" Click="Registr_Click" Content="Сохранить" HorizontalAlignment="Center" Margin="0,292,0,0" VerticalAlignment="Top" Height="35" Width="154"/>
+	</Grid>
+</Window>
