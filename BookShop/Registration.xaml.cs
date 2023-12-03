@@ -31,7 +31,8 @@ namespace BookShop
                     db.users.Add(user);
                     db.SaveChanges();
                 }
-                //
+                UserPanel userPanel = new UserPanel(user);
+                userPanel.Show();
                 this.Close();
             }
             else

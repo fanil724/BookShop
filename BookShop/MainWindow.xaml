@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookShop"
         mc:Ignorable="d"
-		WindowStartupLocation="CenterScreen"
-		
+		WindowStartupLocation="CenterScreen"		
         Title="Войти в магазин" Height="280" Width="240" ResizeMode="NoResize">
 	<Grid KeyUp="Grid_KeyUp">
 		<CheckBox x:Name="VisPass" Content="Показать пороль" Click="VisPass_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,101,0,0"/>

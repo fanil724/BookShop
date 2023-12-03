@@ -8,6 +8,7 @@ namespace BookShop
         public DbSet<Book> books { get; set; }        
         public DbSet<FavoritesPurchases> favoritesPurchases { get; set; }
         public DbSet<Discounts> discounts { get; set; }
+        public DbSet<QuantityAndSales> quantityAndSales { get; set; }
 
         public ApplicationContext()
         {

@@ -36,6 +36,11 @@ namespace BookShop
                             ad.Show();
                             this.Close();
                         }
+                        else {
+                            UserPanel userPanel = new UserPanel(user);
+                            userPanel.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {

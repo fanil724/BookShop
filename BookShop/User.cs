@@ -1,4 +1,6 @@
-﻿namespace BookShop
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BookShop
 {
     public class User
     {
@@ -21,7 +23,7 @@
 
             return true;
         }
-    }   
+    }
 
     public class Book
     {
@@ -31,7 +33,7 @@
         public string? NameOfThePublisher { get; set; }
         public int PageNumber { get; set; }
         public string Genre { get; set; }
-       
+
         public string? PublicationYear { get; set; }
         public double CostPrice { get; set; }
         public double SellingPrice { get; set; }
@@ -47,6 +49,16 @@
         public User User { get; set; }
         public string? Status { get; set; }
 
+    }
+
+    public class QuantityAndSales
+    {
+        public int Id { get; set; }
+        public int BooksID { get; set; }
+        [ForeignKey("BooksID")]
+        public Book Book { get; set; }
+        public int countBooks { get; set; }
+        public int SalesBooks { get; set; }
     }
 
     public class Discounts

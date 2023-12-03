@@ -1,14 +1,12 @@
 ﻿using System.Windows;
 namespace BookShop
 {
-
-    public partial class AdminPanel : Window
+    public partial class UserPanel : Window
     {
         public List<Book> b = new List<Book>() { };
         public User user1 { get; set; }
 
-
-        public AdminPanel(User user)
+        public UserPanel(User user)
         {
             InitializeComponent();
             use.Header = user.Login;
@@ -16,14 +14,18 @@ namespace BookShop
             user1 = user;
             Redaction r = new Redaction();
             r.UserChanged += OnUserChaenged;
-
-
         }
 
         private void OnUserChaenged(object sender, UserEventArgs e)
         {
             user1 = e.us;
             use.Header = user1.Login;
+        }
+
+        private void NameChecked(object sender, RoutedEventArgs e)
+        {
+            avtor.IsChecked = false;
+            ganr.IsChecked = false;
         }
 
         private void AVTOR_Checked_1(object sender, RoutedEventArgs e)
@@ -38,22 +40,20 @@ namespace BookShop
             nam.IsChecked = false;
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
+
+        private void RED_Click(object sender, RoutedEventArgs e)
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                db.UpdateRange(b);
-                db.SaveChanges();
-            }
+            Redaction redaction = new Redaction(user1);
+            redaction.Show();
         }
 
-        private void cancel_Click(object sender, RoutedEventArgs e)
+        private void EXIT_Click(object sender, RoutedEventArgs e)
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                b = db.books.ToList();
-            }
+            MainWindow mn = new MainWindow();
+            mn.Show();
+            this.Close();
         }
+
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
@@ -78,29 +78,34 @@ namespace BookShop
             TableBookAdmin.ItemsSource = b;
         }
 
-        private void RED_Click(object sender, RoutedEventArgs e)
+        private void addFavorit_Click(object sender, RoutedEventArgs e)
         {
-            Redaction redaction = new Redaction(user1);
-            redaction.Show();
+
         }
 
-        private void EXIT_Click(object sender, RoutedEventArgs e)
+        private void addKorzina_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mn = new MainWindow();
-            mn.Show();
-            this.Close();
+
         }
 
-        private void NameChecked(object sender, RoutedEventArgs e)
+        private void NEWBOOK_Click(object sender, RoutedEventArgs e)
         {
-            avtor.IsChecked = false;
-            ganr.IsChecked = false;
-        }   
 
-        private void Dics_Click(object sender, RoutedEventArgs e)
+        }
+
+        private void TopBuy_Click(object sender, RoutedEventArgs e)
         {
-            Dicsount discount = new Dicsount();
-            discount.Show();
+
+        }
+
+        private void Korzina_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void favorites_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
