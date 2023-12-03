@@ -9,7 +9,7 @@ namespace BookShop
         public DbSet<FavoritesPurchases> favoritesPurchases { get; set; }
         public DbSet<Discounts> discounts { get; set; }
         public DbSet<QuantityAndSales> quantityAndSales { get; set; }
-        public virtual DbSet<BookBuy> bookBuys { get; set; }
+      //  public virtual DbSet<BookBuy> bookBuys { get; set; }
 
         public ApplicationContext()
         {
@@ -24,11 +24,11 @@ namespace BookShop
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BookBuy>().HasNoKey();
+          //  modelBuilder.Entity<BookBuy>().HasNoKey();
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
-            configurationBuilder.DefaultTypeMapping<BookBuy>();
+           // configurationBuilder.DefaultTypeMapping<BookBuy>();
         }
     }
 }

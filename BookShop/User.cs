@@ -68,13 +68,13 @@ namespace BookShop
         public string Genre { get; set; }
         public int Discoute { get; set; }
     }
-    [Keyless]
-    public class BookBuy
-    {
-        int SalesFavoriteID;
-        public string Name;
-        public double Price;
-    }
+    //[Keyless]
+    //public class BookBuy
+    //{
+    //    int SalesFavoriteID;
+    //    public string Name;
+    //    public double Price;
+    //}
 
 
 }
