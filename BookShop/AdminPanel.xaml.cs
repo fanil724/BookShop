@@ -52,6 +52,7 @@ namespace BookShop
             using (ApplicationContext db = new ApplicationContext())
             {
                 b = db.books.ToList();
+                TableBookAdmin.ItemsSource = b;
             }
         }
 
@@ -95,7 +96,7 @@ namespace BookShop
         {
             avtor.IsChecked = false;
             ganr.IsChecked = false;
-        }   
+        }
 
         private void Dics_Click(object sender, RoutedEventArgs e)
         {

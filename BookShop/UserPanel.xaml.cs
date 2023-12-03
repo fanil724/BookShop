@@ -100,12 +100,14 @@ namespace BookShop
 
         private void Korzina_Click(object sender, RoutedEventArgs e)
         {
-
+            SalesFavorite sl = new SalesFavorite(user1, "korzina");
+            sl.Show();
         }
 
         private void favorites_Click(object sender, RoutedEventArgs e)
         {
-
+            SalesFavorite sl = new SalesFavorite(user1, "favorit");
+            sl.Show();
         }
     }
 }

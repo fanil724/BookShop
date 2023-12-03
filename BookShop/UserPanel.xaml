@@ -19,6 +19,7 @@
 			<ColumnDefinition/>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
+			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 		<Menu Height="20" Width="50" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Left">
 			<MenuItem Header="Users">
@@ -27,18 +28,18 @@
 				<MenuItem Header="Сменить польхователя" Click="EXIT_Click"/>
 			</MenuItem>
 		</Menu>
-		<CheckBox x:Name="nam"  Grid.Row="2" Content="поиск по названию" Margin="9,7,0,0"  Checked="NameChecked"/>
-		<CheckBox x:Name="avtor"  Grid.Row="2" Content="поиск по автору" HorizontalAlignment="Center" Margin="0,7,0,0" Grid.ColumnSpan="2" Checked="AVTOR_Checked_1" IsChecked="False"/>
-		<CheckBox x:Name="ganr" Grid.Row="2" Content="поиск по жанру" Grid.Column="1" HorizontalAlignment="Right" Margin="0,7,9,0" Checked="GANR_Checked_2" IsChecked="False"/>
-		<Button x:Name="addFavorit" Content="Добавить в избранное" Grid.Row="2" Grid.Column="2" Margin="5,5,5,5" Click="addFavorit_Click"/>
-		<Button x:Name="addKorzina" Content="Добавить в коризину" Grid.Row="3" Grid.Column="2" Margin="5,5,5,5" Click="addKorzina_Click"/>
-		<Button x:Name="NEWBOOK" Content="Новинки в магазине" Click="NEWBOOK_Click" Grid.Row="1" Margin="25,5,95,5"/>
-		<Button x:Name="TopBuy"  Content="Топы продаж"  Click="TopBuy_Click" Grid.Row="1" Margin="195,5,195,5" Grid.ColumnSpan="2"/>
-		<Button x:Name="Korzina" Content="Корзина" Click="Korzina_Click" Grid.Row="1" Grid.Column="1" Margin="95,5,25,5"/>
-		<Button x:Name="favorites" Content="Избранное" Click="favorites_Click" Grid.Row="1" Grid.Column="2" Margin="5,5,5,5"/>
+		<CheckBox x:Name="nam"  Grid.Row="2" Grid.Column="0" Content="поиск по названию" Margin="9,7,0,0"  Checked="NameChecked"/>
+		<CheckBox x:Name="avtor"  Grid.Row="2" Grid.Column="1" Content="поиск по автору" HorizontalAlignment="Center" Margin="0,7,0,0"  Checked="AVTOR_Checked_1" IsChecked="False"/>
+		<CheckBox x:Name="ganr" Grid.Row="2" Grid.Column="2" Content="поиск по жанру" HorizontalAlignment="Center" Margin="0,7,0,0" Checked="GANR_Checked_2" IsChecked="False"/>
+		<Button x:Name="addFavorit" Content="Добавить в избранное" Grid.Row="2" Grid.Column="3" Margin="5,5,5,5" Click="addFavorit_Click"/>
+		<Button x:Name="addKorzina" Content="Добавить в коризину" Grid.Row="3" Grid.Column="3" Margin="5,5,5,5" Click="addKorzina_Click"/>
+		<Button x:Name="NEWBOOK" Content="Новинки в магазине" Click="NEWBOOK_Click" Grid.Row="1"  Margin="5,5,5,5"  Width="140"/>
+		<Button x:Name="TopBuy"  Content="Топы продаж"  Click="TopBuy_Click" Grid.Row="1" Grid.Column="1" Margin="5,5,5,5"  Width="140"/>
+		<Button x:Name="Korzina" Content="Корзина" Click="Korzina_Click" Grid.Row="1" Grid.Column="2" Margin="5,5,5,5" Width="140"/>
+		<Button x:Name="favorites" Content="Избранное" Click="favorites_Click" Grid.Row="1" Grid.Column="3" Margin="5,5,5,5"/>
 
-		<TextBox x:Name="stringSearch" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,5,10,5" TextChanged="TextBox_TextChanged"/>
-		<ListView x:Name="TableBookAdmin" Grid.Row="4"  Grid.ColumnSpan="3"/>
+		<TextBox x:Name="stringSearch" Grid.Row="3" Grid.ColumnSpan="3" Margin="10,5,10,5" TextChanged="TextBox_TextChanged"/>
+		<DataGrid x:Name="TableBookAdmin" Grid.Row="4"  Grid.ColumnSpan="4" IsReadOnly="True"/>
 
 	</Grid>
 </Window>
