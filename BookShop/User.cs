@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop
 {
@@ -39,6 +38,7 @@ namespace BookShop
         public double CostPrice { get; set; }
         public double SellingPrice { get; set; }
 
+
         public string? BookContinuation { get; set; }
     }
 
@@ -68,13 +68,7 @@ namespace BookShop
         public string Genre { get; set; }
         public int Discoute { get; set; }
     }
-    //[Keyless]
-    //public class BookBuy
-    //{
-    //    int SalesFavoriteID;
-    //    public string Name;
-    //    public double Price;
-    //}
+
 
 
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BookShop"
         mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-        Title="SalesFavorite" Height="350" Width="400" ResizeMode="NoResize">
+        Title="SalesFavorite" Height="350" Width="640" ResizeMode="NoResize">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition x:Name="Button" Height="50"/>
@@ -19,8 +19,19 @@
 		</Grid.ColumnDefinitions>
 		<Button x:Name="AddOrBuy" Grid.Column="0" Grid.Row="0"  Click="Add_Click" Margin="10,10,10,10"/>
 		<Button x:Name="Remove" Content="Удалить" Grid.Column="1" Grid.Row="0"  Click="Remove_Click" Margin="10,10,10,10" />
-		<DataGrid x:Name="TableF" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2" />
+		<DataGrid x:Name="TableF" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2" AutoGenerateColumns="False" >
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Width="25" Binding="{Binding Path=ID}"/>
+				<DataGridTextColumn Header="Name" Width="350" Binding="{Binding Path=Name}"/>
+				<DataGridTextColumn Header="Genre" Width="100" Binding="{Binding Path= Genre}"/>
+				<DataGridTextColumn Header="SellsPrice" Width="80" Binding="{Binding Path= SellsPrice}"/>
+				<DataGridTextColumn Header="DiscPrice" Width="80" Binding="{Binding Path= DiscPrice}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+
+
 		<TextBlock Text="Итого: " Grid.Row="2" HorizontalAlignment="Center" Margin="0,7,0,0"/>
-		<TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,7,0,0"/>
+		<TextBlock x:Name="Price" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,7,0,0"/>
 	</Grid>
 </Window>

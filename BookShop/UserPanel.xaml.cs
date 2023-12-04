@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Windows;
 namespace BookShop
 {
     public partial class UserPanel : Window
@@ -90,12 +91,20 @@ namespace BookShop
 
         private void NEWBOOK_Click(object sender, RoutedEventArgs e)
         {
-
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.books.Select(x => x.NameOfThePublisher == DateTime.Now.Year.ToString()).ToList();
+                TableBookAdmin.ItemsSource = result;
+            }
         }
 
         private void TopBuy_Click(object sender, RoutedEventArgs e)
         {
-
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.quantityAndSales.Include(x => x.Book).OrderByDescending(x => x.SalesBooks).Select(x => new { x.Book.Id, x.Book.Name, x.Book.Genre, x.SalesBooks }).ToList();
+                TableBookAdmin.ItemsSource = result;
+            }
         }
 
         private void Korzina_Click(object sender, RoutedEventArgs e)

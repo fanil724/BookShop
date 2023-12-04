@@ -52,7 +52,7 @@ namespace BookShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("books");
+                    b.ToTable("books", (string)null);
                 });
 
             modelBuilder.Entity("BookShop.Discounts", b =>
@@ -70,7 +70,7 @@ namespace BookShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("discounts");
+                    b.ToTable("discounts", (string)null);
                 });
 
             modelBuilder.Entity("BookShop.FavoritesPurchases", b =>
@@ -94,7 +94,7 @@ namespace BookShop.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("favoritesPurchases");
+                    b.ToTable("favoritesPurchases", (string)null);
                 });
 
             modelBuilder.Entity("BookShop.User", b =>
@@ -123,7 +123,7 @@ namespace BookShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("BookShop.FavoritesPurchases", b =>
