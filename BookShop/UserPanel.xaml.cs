@@ -81,20 +81,63 @@ namespace BookShop
 
         private void addFavorit_Click(object sender, RoutedEventArgs e)
         {
+            Book book = TableBookAdmin.SelectedItem as Book;
 
+            if (book == null)
+            {
+                MessageBox.Show("Выбирите книгу для добавления", "Info", MessageBoxButton.OK);
+                return;
+            }
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).Where(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "favorit");
+                if (rezult.Count() != 0)
+                {
+                    MessageBox.Show("Данная книга уже находиться в избранном", "Info", MessageBoxButton.OK);
+                    return;
+                }
+                db.Attach(user1);
+                db.Attach(book);
+                db.favoritesPurchases.Add(new FavoritesPurchases { Book = book, Status = "favorit", User = user1 });
+                db.SaveChanges();
+            }
         }
 
         private void addKorzina_Click(object sender, RoutedEventArgs e)
         {
+            Book book = TableBookAdmin.SelectedItem as Book;
 
+            if (book == null)
+            {
+                MessageBox.Show("Выбирите книгу для добавления", "Info", MessageBoxButton.OK);
+                return;
+            }
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).Where(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "korzina");
+                if (rezult.Count() != 0)
+                {
+
+                    MessageBox.Show("Данная книга уже находиться в корзине", "Info", MessageBoxButton.OK);
+                    return;
+                }
+                db.Attach(user1);
+                db.Attach(book);
+                FavoritesPurchases purchases = new FavoritesPurchases { Book = book, Status = "korzina", User = user1 };
+                db.favoritesPurchases.Add(purchases);
+                db.SaveChanges();
+            }
         }
 
         private void NEWBOOK_Click(object sender, RoutedEventArgs e)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var result = db.books.Select(x => x.NameOfThePublisher == DateTime.Now.Year.ToString()).ToList();
-                TableBookAdmin.ItemsSource = result;
+                string years = DateTime.Now.Year.ToString();
+                b = db.books.Where(x => x.PublicationYear == years).ToList();
+                TableBookAdmin.ItemsSource = b;
             }
         }
 

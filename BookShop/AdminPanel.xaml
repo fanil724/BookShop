@@ -24,14 +24,15 @@
 				<MenuItem x:Name="use" Header="Name user" />
 				<MenuItem Header="Скидки" Click="Dics_Click" />
 				<MenuItem Header="Редактировать пользователя" Click="RED_Click"/>
+				<MenuItem Header="Удалить запись" Click="Remove_Click"/>
 				<MenuItem Header="Сменить польхователя" Click="EXIT_Click"/>
 			</MenuItem>
 		</Menu>
 		<CheckBox x:Name="nam"  Grid.Row="1" Content="поиск по названию" Margin="9,7,0,0"  Checked="NameChecked"/>
 		<CheckBox x:Name="avtor"  Grid.Row="1" Content="поиск по автору" HorizontalAlignment="Center" Margin="0,7,0,0" Grid.ColumnSpan="2" Checked="AVTOR_Checked_1" IsChecked="False"/>
 		<CheckBox x:Name="ganr" Grid.Row="1" Content="поиск по жанру" Grid.Column="1" HorizontalAlignment="Right" Margin="0,7,9,0" Checked="GANR_Checked_2" IsChecked="False"/>
-		<Button x:Name="add" Content="Добавить" Grid.Row="1" Grid.Column="2" Margin="5,5,5,5" Click="add_Click"/>
-		<Button x:Name="cancel" Content="Отменить" Grid.Row="2" Grid.Column="2" Margin="5,5,5,5" Click="cancel_Click"/>
+		<Button x:Name="add" Content="Добавить изменения в таблице" Grid.Row="1" Grid.Column="2" Margin="5,5,5,5" Click="add_Click"/>
+		<Button x:Name="cancel" Content="Обновить" Grid.Row="2" Grid.Column="2" Margin="5,5,5,5" Click="cancel_Click"/>
 
 		<TextBox x:Name="stringSearch" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,5,10,5" TextChanged="TextBox_TextChanged"/>
 		<DataGrid x:Name="TableBookAdmin" Grid.Row="3" AutoGenerateColumns="True" Grid.ColumnSpan="3"/>

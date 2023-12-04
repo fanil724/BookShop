@@ -16,8 +16,6 @@ namespace BookShop
             user1 = user;
             Redaction r = new Redaction();
             r.UserChanged += OnUserChaenged;
-
-
         }
 
         private void OnUserChaenged(object sender, UserEventArgs e)
@@ -49,6 +47,7 @@ namespace BookShop
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
+            stringSearch.Text = string.Empty;
             using (ApplicationContext db = new ApplicationContext())
             {
                 b = db.books.ToList();
@@ -102,6 +101,24 @@ namespace BookShop
         {
             Dicsount discount = new Dicsount();
             discount.Show();
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            Book book = TableBookAdmin.CurrentCell.Item as Book;
+
+            if (book == null)
+            {
+                MessageBox.Show("Выбирите строчку для удаления", "Info", MessageBoxButton.OK);
+                return;
+            }
+
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.books.Remove(book);
+                db.SaveChanges();
+            }
         }
     }
 }

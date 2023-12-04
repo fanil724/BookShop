@@ -45,7 +45,6 @@ namespace BookShop
                 Price.Text = Math.Round(sumprice, 2).ToString();
                 TableF.ItemsSource = books;
             }
-
         }
 
         private double Dscounte(string gen, List<Discounts> ds)
@@ -64,25 +63,57 @@ namespace BookShop
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            BookBuy bookBuy = TableF.SelectedItem as BookBuy;
+
+            if (bookBuy == null)
+            {
+                MessageBox.Show("Выбирите запись", "Info", MessageBoxButton.OK);
+                return;
+            }
+
+
+
             if (st == "korzina")
             {
 
+                MessageBox.Show("Поздравляю с покупкой", "Info", MessageBoxButton.OK);
             }
             else
             {
-
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    var result = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).FirstOrDefault(x => x.User.Id == user1.Id && x.Book.Id == bookBuy.ID && x.Status == "favorit");
+                    result.Status = "korzina";
+                    db.SaveChanges();
+                }
             }
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            if (st == "korzina")
-            {
+            BookBuy bookBuy = TableF.SelectedItem as BookBuy;
 
+            if (bookBuy == null)
+            {
+                MessageBox.Show("Выбирите запись", "Info", MessageBoxButton.OK);
+                return;
             }
-            else
-            {
 
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (st == "korzina")
+                {
+                    var result = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).FirstOrDefault(x => x.User.Id == user1.Id && x.Book.Id == bookBuy.ID && x.Status == "korzina");
+                    MessageBox.Show(result.Book.Name,"Info",MessageBoxButton.OK);
+                    db.favoritesPurchases.Remove(result);
+                }
+                else
+                {
+                    var result = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).FirstOrDefault(x => x.User.Id == user1.Id && x.Book.Id == bookBuy.ID && x.Status == "favorit");
+                    db.favoritesPurchases.Remove(result);
+                }
+                db.SaveChanges();
+                MessageBox.Show("Запись удалена", "Info", MessageBoxButton.OK);
             }
         }
     }
