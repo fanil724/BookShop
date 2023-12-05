@@ -92,7 +92,7 @@ namespace BookShop
             using (ApplicationContext db = new ApplicationContext())
             {
                 var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).FirstOrDefault(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "favorit");
-                if (rezult!=null)
+                if (rezult != null)
                 {
                     MessageBox.Show("Данная книга уже находиться в избранном", "Info", MessageBoxButton.OK);
                     return;
@@ -144,8 +144,8 @@ namespace BookShop
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var result = db.quantityAndSales.Include(x => x.Book).OrderByDescending(x => x.SalesBooks).Select(x => new { x.Book.Id, x.Book.Name, x.Book.Genre, x.SalesBooks }).ToList();
-                TableBookAdmin.ItemsSource = result;
+                b = db.quantityAndSales.Include(x => x.Book).OrderByDescending(x => x.SalesBooks).Select(x => x.Book).ToList();
+                TableBookAdmin.ItemsSource = b;
             }
         }
 
@@ -159,6 +159,11 @@ namespace BookShop
         {
             SalesFavorite sl = new SalesFavorite(user1, "favorit");
             sl.Show();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }
