@@ -91,8 +91,8 @@ namespace BookShop
 
             using (ApplicationContext db = new ApplicationContext())
             {
-                var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).Where(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "favorit");
-                if (rezult.Count() != 0)
+                var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).FirstOrDefault(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "favorit");
+                if (rezult!=null)
                 {
                     MessageBox.Show("Данная книга уже находиться в избранном", "Info", MessageBoxButton.OK);
                     return;
@@ -119,7 +119,6 @@ namespace BookShop
                 var rezult = db.favoritesPurchases.Include(x => x.User).Include(x => x.Book).Where(x => x.User.Id == user1.Id && x.Book.Id == book.Id && x.Status == "korzina");
                 if (rezult.Count() != 0)
                 {
-
                     MessageBox.Show("Данная книга уже находиться в корзине", "Info", MessageBoxButton.OK);
                     return;
                 }
