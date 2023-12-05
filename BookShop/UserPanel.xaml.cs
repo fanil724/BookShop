@@ -161,9 +161,6 @@ namespace BookShop
             sl.Show();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            App.Current.Shutdown();
-        }
+        
     }
 }

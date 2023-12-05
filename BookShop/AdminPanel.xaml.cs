@@ -119,11 +119,6 @@ namespace BookShop
                 db.books.Remove(book);
                 db.SaveChanges();
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            App.Current.Shutdown();
-        }
+        }        
     }
 }
